@@ -1,8 +1,8 @@
 package services;
 
 import models.Sneaker;
-import services.
 import org.junit.Assert;
+import services.WhiskeyService
 import org.junit.Test;
 
 public class SneakerServiceTest {
