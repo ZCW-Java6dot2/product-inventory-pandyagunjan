@@ -2,6 +2,8 @@ package io;
 import models.*;
 import services.SneakerService;
 import services.*;
+
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -79,7 +81,9 @@ public class Console {
         Double sneakerPrice;
         boolean flagForDeletion=true;
         SneakerService sneakerService= new SneakerService();
+        sneakerService.loadData();
         Console mainConsoleDisplay=new Console();
+
         while (flagToContinue) {
             int displayZero = 0;
             System.out.println(" \u001B[36m >> Calculator options available << \u001B[36m\u001B[0m");
@@ -102,6 +106,7 @@ public class Console {
                     sneakerQty = mainConsoleDisplay.getIntegerInput("Enter a Quantity :");
                     sneakerPrice = mainConsoleDisplay.getDoubleInput("Enter a Price :");
                     sneakerService.create(sneakerName,sneakerBrand,sneakerSport,sneakerSize,sneakerQty,sneakerPrice.floatValue());
+               //     sneakerService.printOnFile();
                     break;
                 case 2 :
                     Sneaker[] allSneaker = sneakerService.findAll();

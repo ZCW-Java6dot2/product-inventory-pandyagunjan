@@ -20,6 +20,16 @@ public class Sneaker {
 
     }
 
+    public Sneaker(int id, String name, String brand, String sport, int qty, float price) {
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.sport = sport;
+        this.qty = qty;
+        this.price = price;
+        this.size=size;
+    }
+
     public int getId() {
         return id;
     }
