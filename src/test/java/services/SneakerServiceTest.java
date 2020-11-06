@@ -1,8 +1,9 @@
 package services;
 
 import models.Sneaker;
+import services.*;
+
 import org.junit.Assert;
-import services.
 import org.junit.Test;
 
 public class SneakerServiceTest {
@@ -20,8 +21,7 @@ public class SneakerServiceTest {
 
         // (2)
         SneakerService sneakerService = new SneakerService();
-        Sneaker testSneaker = SneakerService.create(expectedName, expectedBrand,
-                expectedSport, expectedSize, expectedQty, expectedPrice);
+        Sneaker testSneaker = sneakerService.create(expectedName, expectedBrand,expectedSport, expectedSize, expectedQty, expectedPrice);
 
         // (3)
         int actualId = testSneaker.getId();
@@ -42,4 +42,93 @@ public class SneakerServiceTest {
         Assert.assertEquals(expectedPrice, actualPrice,0);
 
     }
+    @Test
+    public void findSneakerTest(){
+
+
+        String expectedName = "Stan Smith";
+        String expectedBrand = "Adidas";
+        String expectedSport = "Tennis";
+        int expectedSize = 10;
+        int expectedQty = 10;
+        float expectedPrice = 80.00f;
+
+
+        SneakerService sneakerService = new SneakerService();
+        Sneaker testSneaker = sneakerService.create(expectedName, expectedBrand,expectedSport, expectedSize, expectedQty, expectedPrice);
+
+
+        Sneaker expectedSneaker=sneakerService.findSneaker(0);
+        Assert.assertEquals(expectedSneaker, testSneaker);
+
+    }
+
+    @Test
+    public void findAllTest(){
+
+
+        String expectedName = "Stan Smith";
+        String expectedBrand = "Adidas";
+        String expectedSport = "Tennis";
+        int expectedSize = 10;
+        int expectedQty = 10;
+        float expectedPrice = 80.00f;
+        SneakerService sneakerService = new SneakerService();
+        Sneaker testSneaker = sneakerService.create(expectedName, expectedBrand,expectedSport, expectedSize, expectedQty, expectedPrice);
+        Sneaker expectedSneaker=sneakerService.findSneaker(0);
+        Assert.assertEquals(expectedSneaker, testSneaker);
+
+
+        //second value
+        String expectedName1 = "Daksh Pandya";
+        String expectedBrand1 = "Nike";
+        String expectedSport1 = "Baseball";
+        int expectedSize1 = 8;
+        int expectedQty1 = 5;
+        float expectedPrice1 = 55f;
+        Sneaker testSneaker1 = sneakerService.create(expectedName1, expectedBrand1,expectedSport1, expectedSize1, expectedQty1, expectedPrice1);
+
+        Sneaker expectedSneaker1=sneakerService.findSneaker(1);
+
+        Sneaker[] sneakerArrayActual = new Sneaker[2];
+        sneakerArrayActual[0]= testSneaker;
+        sneakerArrayActual[1]= testSneaker1;
+
+        Sneaker [] sneakerExpected = sneakerService.findAll();
+
+        Assert.assertEquals(sneakerArrayActual[0], sneakerExpected[0]);
+        Assert.assertEquals(sneakerArrayActual[1], sneakerExpected[1]);
+
+    }
+    @Test
+    public void deleteTest(){
+        String expectedName = "Stan Smith";
+        String expectedBrand = "Adidas";
+        String expectedSport = "Tennis";
+        int expectedSize = 10;
+        int expectedQty = 10;
+        float expectedPrice = 80.00f;
+        SneakerService sneakerService = new SneakerService();
+
+        Sneaker testSneaker = sneakerService.create(expectedName, expectedBrand,expectedSport, expectedSize, expectedQty, expectedPrice);
+       // Sneaker expectedSneaker=sneakerService.findSneaker(0);
+       // Assert.assertEquals(expectedSneaker, testSneaker);
+
+        //second value
+        String expectedName1 = "Daksh Pandya";
+        String expectedBrand1 = "Nike";
+        String expectedSport1 = "Baseball";
+        int expectedSize1 = 8;
+        int expectedQty1 = 5;
+        float expectedPrice1 = 55f;
+        Sneaker testSneaker1 = sneakerService.create(expectedName1, expectedBrand1,expectedSport1, expectedSize1, expectedQty1, expectedPrice1);
+        boolean sneakerExpected = sneakerService.delete(2);
+
+        Assert.assertEquals(sneakerExpected, true);
+        Assert.assertEquals(sneakerService.findSneaker(1), null);
+
+
+    }
+
+
 }

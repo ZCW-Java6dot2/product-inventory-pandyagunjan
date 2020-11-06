@@ -14,11 +14,10 @@ public class SneakerTest {
         String expectedSport = "Tennnis";
         int expectedQty = 10;
         float expectedPrice = 80.00f;
-
+        int expectedSize=12;
 
         // (3)
-        Sneaker testSneaker = new Sneaker(expectedId, expectedName, expectedBrand,
-                expectedSport, expectedQty,expectedPrice);
+        Sneaker testSneaker = new Sneaker(expectedId, expectedName, expectedBrand,expectedSport, expectedSize,expectedQty,expectedPrice);
 
         // (4)
         Assert.assertEquals(expectedId, testSneaker.getId());

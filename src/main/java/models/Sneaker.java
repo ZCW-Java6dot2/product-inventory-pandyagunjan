@@ -9,13 +9,15 @@ public class Sneaker {
     private float price;
 
 
-    public Sneaker(int id, String name, String brand, String sport, int qty, float price) {
+    public Sneaker(int id, String name, String brand, String sport,int size,int qty, float price) {
         this.id = id;
         this.name = name;
         this.brand = brand;
         this.sport = sport;
         this.qty = qty;
         this.price = price;
+        this.size=size;
+
     }
 
     public int getId() {
