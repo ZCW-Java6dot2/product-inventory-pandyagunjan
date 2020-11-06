@@ -14,9 +14,10 @@ public class App {
 
         public void init(){
             // (4)
-            sneakerService.create("Gunjan","Nike","Cricket",11,2,2.5f);
-            Sneaker findSneakerResult = sneakerService.findSneaker(0);
-            Console.printWelcome();
+            Console consoleObj=new Console();
+            consoleObj.printWelcome();
+            consoleObj.displayConsole();
+
         }
     }
 

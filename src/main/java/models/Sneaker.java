@@ -47,4 +47,12 @@ public class Sneaker {
     public int getQty() {
         return qty;
     }
+
+    public void setBrand(String sneakerBrand) {
+        this.brand=sneakerBrand;
+    }
+
+    public void setPrice(Double sneakerPrice) {
+        this.price=sneakerPrice.floatValue();
+    }
 }
