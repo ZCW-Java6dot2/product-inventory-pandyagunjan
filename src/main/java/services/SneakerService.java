@@ -64,8 +64,8 @@ public class SneakerService {
     public void printOnFile() throws IOException {
     String csvFile = "/Users/gunjan/Desktop/Sneakers.csv";
     FileWriter writer = new FileWriter(csvFile); //(1)
+        CSVUtils.writeLine(writer,new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));  // (2)
 
-CSVUtils.writeLine(writer,new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));  // (2)
 
 for(
     Sneaker s :inventory)

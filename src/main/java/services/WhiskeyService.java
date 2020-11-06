@@ -1,8 +1,16 @@
 
 package services;
 
+        import models.Sneaker;
         import models.Whiskey;
+        import utlis.CSVUtils;
+
+        import java.io.BufferedReader;
+        import java.io.FileReader;
+        import java.io.FileWriter;
+        import java.io.IOException;
         import java.util.ArrayList;
+        import java.util.Arrays;
 
 public class WhiskeyService {
     //
@@ -61,6 +69,60 @@ public class WhiskeyService {
         }
         return false;
     }
+
+    public void printOnFile() throws IOException {
+        String csvFile = "/Users/gunjan/Desktop/Whiskey.csv";
+        FileWriter writer = new FileWriter(csvFile); //(1)
+        CSVUtils.writeLine(writer,new ArrayList<String>(Arrays.asList(String.valueOf(nextId))));  // (2)
+
+
+        for(
+                Whiskey s :inventory)
+        {
+            ArrayList<String> list = new ArrayList<>(); // (3)
+            list.add(String.valueOf(s.getId()));
+            list.add(s.getName());
+            list.add(s.getBrand());
+            list.add(String.valueOf(s.getQty()));
+            CSVUtils.writeLine(writer, list);  // (4)
+        }
+
+// (5)
+        writer.flush();
+        writer.close();
+    }
+    public void loadData(){
+        // (1)
+        String csvFile = "/Users/gunjan/Desktop/Whiskey.csv";
+        String line = "";
+        String csvSplitBy = ",";
+
+
+        // (2)
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            nextId = (int)Integer.parseInt(br.readLine());
+
+            while ((line = br.readLine()) != null) {
+                // split line with comma
+                String[] beer = line.split(csvSplitBy);
+
+                // (4)
+                int id = Integer.parseInt(beer[0]);
+                String name = beer[1];
+                String brand = beer[2];
+                String sport = beer[3];
+                int qty = Integer.parseInt(beer[4]);
+                float price = Float.parseFloat(beer[5]);
+
+                // (5)
+                inventory.add(new Whiskey(id, name, brand, qty));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

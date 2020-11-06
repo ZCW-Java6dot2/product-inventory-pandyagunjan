@@ -65,7 +65,7 @@ public class Console {
         return userInputDouble;
     }
 
-    public void  displayConsoleSneaker() {
+    public void  displayConsoleSneaker() throws IOException {
         int choiceInput=0;
         int idToBeDeleted;
         int idToBeUpdated;
@@ -106,15 +106,19 @@ public class Console {
                     sneakerQty = mainConsoleDisplay.getIntegerInput("Enter a Quantity :");
                     sneakerPrice = mainConsoleDisplay.getDoubleInput("Enter a Price :");
                     sneakerService.create(sneakerName,sneakerBrand,sneakerSport,sneakerSize,sneakerQty,sneakerPrice.floatValue());
-               //     sneakerService.printOnFile();
+                    sneakerService.printOnFile();
+
                     break;
                 case 2 :
+
                     Sneaker[] allSneaker = sneakerService.findAll();
                     for (int i = 0; i < allSneaker.length; i++) {
                         Sneaker s = allSneaker[i];
                         System.out.println(s);
 
                     }
+
+
                     break;
                 case 3 :
                     idToBeDeleted = mainConsoleDisplay.getIntegerInput("Enter a Id of Sneaker to be deleted :");
@@ -177,7 +181,7 @@ public class Console {
 
     }
 
-    public void  displayConsoleWhiskey() {
+    public void  displayConsoleWhiskey() throws IOException {
         int choiceInput=0;
         int idToBeDeleted;
         int idToBeUpdated;
@@ -193,6 +197,7 @@ public class Console {
         int whiskeyPrice;
         boolean flagForDeletion=true;
         WhiskeyService whiskeyService= new WhiskeyService();
+       // whiskeyService.loadData();
         Console mainConsoleDisplay=new Console();
         while (flagToContinue) {
             int displayZero = 0;
@@ -213,6 +218,7 @@ public class Console {
                     whiskeyBrand = mainConsoleDisplay.getStringInput("Enter a Brand :");
                     whiskeyQty = mainConsoleDisplay.getIntegerInput("Enter a Quantity :");
                     whiskeyService.create(whiskeyName,whiskeyBrand,whiskeyQty);
+                    whiskeyService.printOnFile();
                     break;
                 case 2 :
                     Whiskey[] allWhiskey = whiskeyService.findAll();
@@ -250,6 +256,7 @@ public class Console {
                     System.out.println(foundWhiskey);
                     break;
                 case 5:
+
                     idForReports = mainConsoleDisplay.getIntegerInput("Enter a Id of Whiskey to see the inventory :");
                     //Whiskey foundWhiskey = WhiskeyService.findWhiskey(idToBeUpdated);
                     whichFieldWhiskey=mainConsoleDisplay.getIntegerInput("Press -   1.Brand \n        2.Quantity:");
@@ -263,6 +270,7 @@ public class Console {
                         System.out.println("Qty is :"+ whiskeyService.findWhiskey(idForReports).getQty());
                     }
 
+//                    whiskeyService.loadData();
                     break;
 
                 case 6 :
