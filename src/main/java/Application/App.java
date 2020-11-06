@@ -16,7 +16,20 @@ public class App {
             // (4)
             Console consoleObj=new Console();
             consoleObj.printWelcome();
-            consoleObj.displayConsole();
+            int inventoryChoise;
+            while(true) {
+                System.out.println(" \u001B[36m >> Inventory options available << \u001B[36m\u001B[0m");
+                //System.out.println("\u001B[0m");
+                System.out.println("        1.      Sneaker ");
+                System.out.println("        2.      Whiskey ");
+                System.out.println("        Other.  Exit ");
+                inventoryChoise = consoleObj.getIntegerInput("\u001B[34m Please select \u001B[34m");
+                if (inventoryChoise == 1) {
+                    consoleObj.displayConsoleSneaker();
+                } else if (inventoryChoise == 2) {
+                    consoleObj.displayConsoleWhiskey();
+                }
+            }
 
         }
     }

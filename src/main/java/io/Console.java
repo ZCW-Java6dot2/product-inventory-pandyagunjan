@@ -1,7 +1,7 @@
 package io;
 import models.*;
 import services.SneakerService;
-
+import services.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -63,7 +63,7 @@ public class Console {
         return userInputDouble;
     }
 
-    public void  displayConsole() {
+    public void  displayConsoleSneaker() {
         int choiceInput=0;
         int idToBeDeleted;
         int idToBeUpdated;
@@ -171,6 +171,114 @@ public class Console {
 
 
     }
+
+    public void  displayConsoleWhiskey() {
+        int choiceInput=0;
+        int idToBeDeleted;
+        int idToBeUpdated;
+        int idForReports;
+        int whichFieldWhiskey;
+        Boolean flagToContinue = true;
+        int id;
+        String whiskeyName;
+        String whiskeyBrand;
+        String whiskeySport;
+        int whiskeySize;
+        int whiskeyQty;
+        int whiskeyPrice;
+        boolean flagForDeletion=true;
+        WhiskeyService whiskeyService= new WhiskeyService();
+        Console mainConsoleDisplay=new Console();
+        while (flagToContinue) {
+            int displayZero = 0;
+            System.out.println(" \u001B[36m >> Inventory options available << \u001B[36m\u001B[0m");
+            //System.out.println("\u001B[0m");
+            System.out.println("        1.  Create ");
+            System.out.println("        2.  Read ");
+            System.out.println("        3.  Delete ");
+            System.out.println("        4.  Update ");
+            System.out.println("        5.  Reports ");
+            System.out.println("        6.  Exit ");
+            choiceInput = mainConsoleDisplay.getIntegerInput("\u001B[34m Please enter the choice of action you want to perform: \u001B[34m");
+
+            switch(choiceInput)
+            {
+                case 1 :
+                    whiskeyName = mainConsoleDisplay.getStringInput("Enter a Name  :");
+                    whiskeyBrand = mainConsoleDisplay.getStringInput("Enter a Brand :");
+                    whiskeyQty = mainConsoleDisplay.getIntegerInput("Enter a Quantity :");
+                    whiskeyService.create(whiskeyName,whiskeyBrand,whiskeyQty);
+                    break;
+                case 2 :
+                    Whiskey[] allWhiskey = whiskeyService.findAll();
+                    for (int i = 0; i < allWhiskey.length; i++) {
+                        Whiskey s = allWhiskey[i];
+                        System.out.println(s);
+
+                    }
+                    break;
+                case 3 :
+                    idToBeDeleted = mainConsoleDisplay.getIntegerInput("Enter a Id of Whiskey to be deleted :");
+                    flagForDeletion = whiskeyService.delete(idToBeDeleted);
+                    if(flagForDeletion==true)
+                        System.out.print("Item has been deleted");
+                    else
+                        System.out.print("Item has NOT been deleted");
+                    break;
+                case 4 :
+                    idToBeUpdated = mainConsoleDisplay.getIntegerInput("Enter a Id of Whiskey to be updated :");
+                    Whiskey foundWhiskey = whiskeyService.findWhiskey(idToBeUpdated);
+                    whichFieldWhiskey=mainConsoleDisplay.getIntegerInput("Press -   1.Update Brand \n         2.Update Quantity:");
+                    if(whichFieldWhiskey==1)
+                    {
+                        whiskeyBrand = mainConsoleDisplay.getStringInput("Enter a Brand :");
+                        foundWhiskey.setBrand(whiskeyBrand);
+
+                    }
+                    else
+                    if(whichFieldWhiskey==2)
+                    {
+                        whiskeyPrice = mainConsoleDisplay.getIntegerInput("Enter a Quanity :");
+                        foundWhiskey.setQty(whiskeyPrice);
+
+                    }
+                    System.out.println(foundWhiskey);
+                    break;
+                case 5:
+                    idForReports = mainConsoleDisplay.getIntegerInput("Enter a Id of Whiskey to see the inventory :");
+                    //Whiskey foundWhiskey = WhiskeyService.findWhiskey(idToBeUpdated);
+                    whichFieldWhiskey=mainConsoleDisplay.getIntegerInput("Press -   1.Brand \n        2.Quantity:");
+                    if(whichFieldWhiskey==1)
+                    {
+                        System.out.println("Brand is :"+whiskeyService.findWhiskey(idForReports).getBrand());
+                    }
+                    else
+                    if(whichFieldWhiskey==2)
+                    {
+                        System.out.println("Qty is :"+ whiskeyService.findWhiskey(idForReports).getQty());
+                    }
+
+                    break;
+
+                case 6 :
+                    flagToContinue=false;
+                    System.out.print("Quiting the inventory system, Program Ending");
+                    System.exit(0);
+                    break;
+
+                default :
+                    flagToContinue=false;
+                    System.out.print("Quiting the inventory system, Program Ending");
+                    System.exit(0);
+                    break;
+            }
+        }
+
+
+
+    }
+
+
     }
 
 

@@ -118,7 +118,7 @@ public class WhiskeyServiceTest {
         int expectedQty1 = 5;
         float expectedPrice1 = 55f;
         Whiskey testWhiskey1 = WhiskeyService.create(expectedName1, expectedBrand1, expectedQty1);
-        boolean WhiskeyExpected = WhiskeyService.delete(2);
+        boolean WhiskeyExpected = WhiskeyService.delete(1);
 
         Assert.assertEquals(WhiskeyExpected, true);
         Assert.assertEquals(WhiskeyService.findWhiskey(1), null);

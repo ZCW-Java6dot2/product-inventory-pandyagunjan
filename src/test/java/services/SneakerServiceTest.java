@@ -122,7 +122,7 @@ public class SneakerServiceTest {
         int expectedQty1 = 5;
         float expectedPrice1 = 55f;
         Sneaker testSneaker1 = sneakerService.create(expectedName1, expectedBrand1,expectedSport1, expectedSize1, expectedQty1, expectedPrice1);
-        boolean sneakerExpected = sneakerService.delete(2);
+        boolean sneakerExpected = sneakerService.delete(1);
 
         Assert.assertEquals(sneakerExpected, true);
         Assert.assertEquals(sneakerService.findSneaker(1), null);

@@ -35,4 +35,14 @@ public class Whiskey {
     public int getQty() {
         return qty;
     }
+    public void setBrand(String sneakerBrand) {
+        this.brand=sneakerBrand;
+    }
+
+    public void setQty(Integer qty) {
+        this.qty=qty.intValue();
+    }
+
+
+
 }
