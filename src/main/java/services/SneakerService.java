@@ -18,6 +18,7 @@ public class SneakerService {
 
     public SneakerService() {
 
+
     }
 
     public Sneaker create(String name, String brand, String sport, int size, int quantity, float price) {

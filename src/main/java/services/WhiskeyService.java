@@ -129,7 +129,7 @@ public class WhiskeyService {
         this.inventory = objectMapper.readValue(new File("/Users/gunjan/Dev/product-inventory-pandyagunjan/Whiskey.json"), new TypeReference<ArrayList<Whiskey>>(){});
     }
 
-    public  void saveInventorySneaker() throws IOException {
+    public  void saveInventoryWhiskey() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         writer.writeValue(new File("/Users/gunjan/Dev/product-inventory-pandyagunjan/Whiskey.json"), inventory);

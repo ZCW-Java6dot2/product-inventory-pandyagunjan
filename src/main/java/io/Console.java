@@ -223,7 +223,8 @@ public class Console {
                     whiskeyBrand = mainConsoleDisplay.getStringInput("Enter a Brand :");
                     whiskeyQty = mainConsoleDisplay.getIntegerInput("Enter a Quantity :");
                     whiskeyService.create(whiskeyName,whiskeyBrand,whiskeyQty);
-                    whiskeyService.printOnFile();
+                    //whiskeyService.printOnFile();
+                    whiskeyService.saveInventoryWhiskey();
                     break;
                 case 2 :
                     Whiskey[] allWhiskey = whiskeyService.findAll();
