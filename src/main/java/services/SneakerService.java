@@ -120,6 +120,7 @@ writer.close();
         }
     }
 
+
 public void loadDataUsingJSON() throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();

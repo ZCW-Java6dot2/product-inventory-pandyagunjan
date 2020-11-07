@@ -1,0 +1,33 @@
+[ {
+  "id" : 1,
+  "name" : " \"Stan Smith\"",
+  "brand" : " \"Adidas\"",
+  "sport" : " \"walking\"",
+  "size" : 0,
+  "qty" : 5,
+  "price" : 25.0
+}, {
+  "id" : 2,
+  "name" : " \"Air Jordan\"",
+  "brand" : " \"Nike\"",
+  "sport" : " \"basketball\"",
+  "size" : 0,
+  "qty" : 2,
+  "price" : 150.0
+}, {
+  "id" : 3,
+  "name" : " \"Chuck Taylor\"",
+  "brand" : " \"Converse\"",
+  "sport" : " \"basketball\"\"",
+  "size" : 0,
+  "qty" : 10,
+  "price" : 20.0
+}, {
+  "id" : 4,
+  "name" : "12",
+  "brand" : "12",
+  "sport" : "22",
+  "size" : 12,
+  "qty" : 2,
+  "price" : 1.0
+} ]

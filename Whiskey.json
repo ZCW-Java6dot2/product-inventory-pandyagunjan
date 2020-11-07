@@ -1,0 +1,21 @@
+[ {
+  "id" : 1,
+  "name" : "\"Stan Whiskey\"",
+  "brand" : "\"Red Label\"",
+  "qty" : 5
+}, {
+  "id" : 2,
+  "name" : "\"Air Whiskey\"",
+  "brand" : "\"Nike Whiskey\"",
+  "qty" : 2
+}, {
+  "id" : 3,
+  "name" : "\"Chuck Whiskey\"",
+  "brand" : "\"Converse Whiskey\"",
+  "qty" : 10
+}, {
+  "id" : 4,
+  "name" : "Test Whiksey Name",
+  "brand" : "Brand NOT Known",
+  "qty" : 2
+} ]
