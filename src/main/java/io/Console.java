@@ -116,7 +116,14 @@ public class Console {
                     Sneaker[] allSneaker = sneakerService.findAll();
                     for (int i = 0; i < allSneaker.length; i++) {
                         Sneaker s = allSneaker[i];
-                     //   System.out.println(s);
+                        System.out.println("ID : " + s.getId());
+                        System.out.println("Name Is: " + s.getName());
+                        System.out.println("Brand Is: " + s.getBrand());
+                        System.out.println("Sport Is: " + s.getSport());
+                        System.out.println("Qty Is: " + s.getQty());
+                        System.out.println("Size Is: " + s.getQty());
+                        System.out.println("Price Is: " + s.getPrice()+"\n");
+
 
                     }
 
@@ -147,7 +154,13 @@ public class Console {
                         foundSneaker.setPrice(sneakerPrice);
 
                     }
-                  //  System.out.println(foundSneaker.getBrand());
+                    System.out.println("ID : " + foundSneaker.getId());
+                    System.out.println("Name Is: " + foundSneaker.getName());
+                    System.out.println("Brand Is: " + foundSneaker.getBrand());
+                    System.out.println("Sport Is: " + foundSneaker.getSport());
+                    System.out.println("Qty Is: " + foundSneaker.getQty());
+                    System.out.println("Size Is: " + foundSneaker.getQty());
+                    System.out.println("Price Is: " + foundSneaker.getPrice()+"\n");
                     break;
                 case 5:
                     idForReports = mainConsoleDisplay.getIntegerInput("Enter a Id of Sneaker to see the inventory :");
@@ -230,8 +243,10 @@ public class Console {
                     Whiskey[] allWhiskey = whiskeyService.findAll();
                     for (int i = 0; i < allWhiskey.length; i++) {
                         Whiskey s = allWhiskey[i];
-                       // System.out.println(s);
-
+                        System.out.println("ID : " + s.getId());
+                        System.out.println("Name Is: " + s.getName());
+                        System.out.println("Brand Is: " + s.getBrand());
+                        System.out.println("Qty Is: " + s.getQty()+"\n");
                     }
                     break;
                 case 3 :
@@ -259,7 +274,10 @@ public class Console {
                         foundWhiskey.setQty(whiskeyPrice);
 
                     }
-                    System.out.println(foundWhiskey);
+                    System.out.println("ID : " + foundWhiskey.getId());
+                    System.out.println("Name Is: " + foundWhiskey.getName());
+                    System.out.println("Updated Brand Is: " + foundWhiskey.getBrand());
+                    System.out.println("Updated Qty Is: " + foundWhiskey.getQty()+"\n");
                     break;
                 case 5:
 
