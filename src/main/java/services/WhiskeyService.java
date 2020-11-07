@@ -1,14 +1,15 @@
 
 package services;
 
+        import com.fasterxml.jackson.core.type.TypeReference;
+        import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+        import com.fasterxml.jackson.databind.ObjectMapper;
+        import com.fasterxml.jackson.databind.ObjectWriter;
         import models.Sneaker;
         import models.Whiskey;
-        import utlis.CSVUtils;
+        import utils.CSVUtils;
 
-        import java.io.BufferedReader;
-        import java.io.FileReader;
-        import java.io.FileWriter;
-        import java.io.IOException;
+        import java.io.*;
         import java.util.ArrayList;
         import java.util.Arrays;
 
@@ -93,7 +94,7 @@ public class WhiskeyService {
     }
     public void loadData(){
         // (1)
-        String csvFile = "/Users/gunjan/Desktop/Whiskey.csv";
+        String csvFile = "/Users/gunjan/Dev/product-inventory-pandyagunjan/Whiskey.csv";
         String line = "";
         String csvSplitBy = ",";
 
@@ -110,9 +111,8 @@ public class WhiskeyService {
                 int id = Integer.parseInt(beer[0]);
                 String name = beer[1];
                 String brand = beer[2];
-                String sport = beer[3];
-                int qty = Integer.parseInt(beer[4]);
-                float price = Float.parseFloat(beer[5]);
+                int qty = Integer.parseInt(beer[3]);
+
 
                 // (5)
                 inventory.add(new Whiskey(id, name, brand, qty));
@@ -123,6 +123,18 @@ public class WhiskeyService {
         }
     }
 
+    public void loadDataUsingJSON() throws IOException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        this.inventory = objectMapper.readValue(new File("/Users/gunjan/Dev/product-inventory-pandyagunjan/Whiskey.json"), new TypeReference<ArrayList<Whiskey>>(){});
+    }
+
+    public  void saveInventorySneaker() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        writer.writeValue(new File("/Users/gunjan/Dev/product-inventory-pandyagunjan/Whiskey.json"), inventory);
+
+    }
 
 
 }

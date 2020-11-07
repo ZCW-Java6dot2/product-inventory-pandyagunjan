@@ -1,19 +1,9 @@
 package services;
 
-import models.Sneaker;
 import models.Whiskey;
-import services.*;
 
 import org.junit.Assert;
 import org.junit.Test;
-import utlis.CSVUtils;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class WhiskeyServiceTest {
 
@@ -127,10 +117,11 @@ public class WhiskeyServiceTest {
         int expectedQty1 = 5;
         float expectedPrice1 = 55f;
         Whiskey testWhiskey1 = WhiskeyService.create(expectedName1, expectedBrand1, expectedQty1);
-        boolean WhiskeyExpected = WhiskeyService.delete(1);
+
+        boolean WhiskeyExpected = WhiskeyService.delete(3);
 
         Assert.assertEquals(WhiskeyExpected, true);
-        Assert.assertEquals(WhiskeyService.findWhiskey(1), null);
+        Assert.assertEquals(WhiskeyService.findWhiskey(3), null);
 
 
     }

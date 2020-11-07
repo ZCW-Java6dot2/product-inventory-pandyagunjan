@@ -11,11 +11,11 @@ public class Console {
 
       public static void printWelcome(){
             System.out.println("" +
-                    "**************************************************" +
-                    "***           Welcome and Bienvenue            ***" +
-                    "***                    to                      ***" +
-                    "***          Gunjan's Inventory Manager        ***" +
-                    "**************************************************");
+                    "**************************************************\n" +
+                    "***           Welcome and Bienvenue            ***\n" +
+                    "***                    to                      ***\n" +
+                    "***          Gunjan's Inventory Manager        ***\n" +
+                    "**************************************************\n");
         }
 
     public  String getStringInput(String prompt) {
@@ -93,7 +93,8 @@ public class Console {
             System.out.println("        3.  Delete ");
             System.out.println("        4.  Update ");
             System.out.println("        5.  Reports ");
-            System.out.println("        6.  Exit ");
+            System.out.println("        6.  Whiskey Inventory Menu ");
+            System.out.println("        7.  Exit ");
             choiceInput = mainConsoleDisplay.getIntegerInput("\u001B[34m Please enter the choice of action you want to perform: \u001B[34m");
 
             switch(choiceInput)
@@ -106,7 +107,8 @@ public class Console {
                     sneakerQty = mainConsoleDisplay.getIntegerInput("Enter a Quantity :");
                     sneakerPrice = mainConsoleDisplay.getDoubleInput("Enter a Price :");
                     sneakerService.create(sneakerName,sneakerBrand,sneakerSport,sneakerSize,sneakerQty,sneakerPrice.floatValue());
-                    sneakerService.printOnFile();
+                  // sneakerService.printOnFile();
+                    sneakerService.saveInventorySneaker();
 
                     break;
                 case 2 :
@@ -114,7 +116,7 @@ public class Console {
                     Sneaker[] allSneaker = sneakerService.findAll();
                     for (int i = 0; i < allSneaker.length; i++) {
                         Sneaker s = allSneaker[i];
-                        System.out.println(s);
+                     //   System.out.println(s);
 
                     }
 
@@ -145,7 +147,7 @@ public class Console {
                         foundSneaker.setPrice(sneakerPrice);
 
                     }
-                    System.out.println(foundSneaker);
+                  //  System.out.println(foundSneaker.getBrand());
                     break;
                 case 5:
                     idForReports = mainConsoleDisplay.getIntegerInput("Enter a Id of Sneaker to see the inventory :");
@@ -162,12 +164,15 @@ public class Console {
                     }
 
                     break;
-
                 case 6 :
+                    displayConsoleWhiskey();
+                    break;
+                case 7 :
                     flagToContinue=false;
                     System.out.print("Quiting the inventory system, Program Ending");
                     System.exit(0);
                     break;
+
 
                 default :
                     flagToContinue=false;
@@ -197,7 +202,7 @@ public class Console {
         int whiskeyPrice;
         boolean flagForDeletion=true;
         WhiskeyService whiskeyService= new WhiskeyService();
-       // whiskeyService.loadData();
+        whiskeyService.loadData();
         Console mainConsoleDisplay=new Console();
         while (flagToContinue) {
             int displayZero = 0;
@@ -207,8 +212,8 @@ public class Console {
             System.out.println("        2.  Read ");
             System.out.println("        3.  Delete ");
             System.out.println("        4.  Update ");
-            System.out.println("        5.  Reports ");
-            System.out.println("        6.  Exit ");
+            System.out.println("        6.  Sneaker Inventory Menu ");
+            System.out.println("        7.  Exit ");
             choiceInput = mainConsoleDisplay.getIntegerInput("\u001B[34m Please enter the choice of action you want to perform: \u001B[34m");
 
             switch(choiceInput)
@@ -224,7 +229,7 @@ public class Console {
                     Whiskey[] allWhiskey = whiskeyService.findAll();
                     for (int i = 0; i < allWhiskey.length; i++) {
                         Whiskey s = allWhiskey[i];
-                        System.out.println(s);
+                       // System.out.println(s);
 
                     }
                     break;
@@ -272,8 +277,10 @@ public class Console {
 
 //                    whiskeyService.loadData();
                     break;
-
                 case 6 :
+                    displayConsoleSneaker();
+                    break;
+                case 7 :
                     flagToContinue=false;
                     System.out.print("Quiting the inventory system, Program Ending");
                     System.exit(0);

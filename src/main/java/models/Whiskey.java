@@ -13,7 +13,6 @@ public class Whiskey {
         this.id = id;
         this.name = name;
         this.brand = brand;
-
         this.qty = qty;
 
 

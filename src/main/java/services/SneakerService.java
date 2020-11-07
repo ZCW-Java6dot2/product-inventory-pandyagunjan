@@ -3,9 +3,12 @@ package services;
 import models.Sneaker;
 import java.util.ArrayList;
 import java.io.*;
-import utlis.*;
 import java.util.Arrays;
-
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import utils.CSVUtils;
+import com.fasterxml.jackson.core.type.TypeReference;
 public class SneakerService {
     //
 
@@ -87,7 +90,7 @@ writer.close();
 }
     public void loadData(){
         // (1)
-        String csvFile = "/Users/gunjan/Desktop/Sneakers.csv";
+        String csvFile = "/Users/gunjan/Dev/product-inventory-pandyagunjan/Sneakers.csv";
         String line = "";
         String csvSplitBy = ",";
 
@@ -116,6 +119,17 @@ writer.close();
         }
     }
 
+public void loadDataUsingJSON() throws IOException {
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        this.inventory = objectMapper.readValue(new File("/Users/gunjan/Dev/product-inventory-pandyagunjan/sneaker.json"), new TypeReference<ArrayList<Sneaker>>(){});
+    }
+
+    public  void saveInventorySneaker() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        writer.writeValue(new File("/Users/gunjan/Dev/product-inventory-pandyagunjan/sneaker.json"), inventory);
+
+    }
 
 }
